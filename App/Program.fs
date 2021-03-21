@@ -1,4 +1,3 @@
-open CommonLibrary
 open UseCases
 
 let parseCommand args =
@@ -19,11 +18,11 @@ let main argv =
     match command with
     | Some x -> 
       match x with
-      | "add" -> ADD.exec {FirstName=Some("tomas"); LastName=Some("Sundvall"); EmailAddress=Some("tsunvall@someting.se"); PhoneNumber=None}
+      | "add" -> ADD.exec {FirstName=Some "Donald"; LastName=Some "Duck"; EmailAddress=Some "donald@tower.quack"; PhoneNumber= Some "+12343343"}
       | "list" -> LIST.exec ()
-      | "delete" -> DELETE.exec {Id=Some("blahaa")}
-      | _ -> Failure "Command not found"
-    | None -> Failure "No command entered"
+      | "delete" -> DELETE.exec {Id=Some"blahaa"}
+      | _ -> Error "Command not found"
+    | None -> Error "No command entered"
 
   printfn "Result of execution: %A" result
 
